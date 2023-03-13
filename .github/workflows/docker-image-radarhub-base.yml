@@ -5,14 +5,15 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+    paths:
+      - radarhub-base/**
+      - .github/workflows/docker-image-radarhub-base.yml
+
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag dockerhub-base:$(date +%s)
+      run: docker build . --file dockerhub-base/Dockerfile --tag dockerhub-base:$(date +%s)
