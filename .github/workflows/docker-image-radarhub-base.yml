@@ -13,7 +13,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: radarhub-base
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file dockerhub-base/Dockerfile --tag dockerhub-base:$(date +%s)
+      run: docker build . --tag radarhub-base:$(date +%s)
